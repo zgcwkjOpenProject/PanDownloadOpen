@@ -13,7 +13,7 @@ namespace PanDownloadOpen
         public static bool HostTesting()
         {
             string host = GetHost();
-            if (!host.Contains(pandownload_com))
+            if (host.Contains(pandownload_com))
             {
                 return true;
             }

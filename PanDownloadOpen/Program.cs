@@ -22,29 +22,28 @@ namespace PanDownloadOpen
             Console.WriteLine("功能：跳过 PanDownload 的服务验证，实现打开程序");
             Console.WriteLine("参考：https://github.com/TkzcM/pandownload-fake-server");
             Console.WriteLine("开源：https://github.com/zgcwkj/PanDownloadOpen");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine(">> 程序自检 Host 文件是否有残留");
+            if (FileOpen.HostTesting())
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("发现上次的 Host 文件没有清理干净！");
+                FileOpen.HostReduction();
+                Console.WriteLine("现在已经为你清理了！");
+                Console.WriteLine("继续使用，请输入任意字符，空字符直接退出（按回车）");
+                string str = Console.ReadLine();
+                if (str == "") { Environment.Exit(0); }
+            }
             string path = Environment.CurrentDirectory + @"\PanDownload.exe";
             if (!File.Exists(path))
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("请将本程序放在和 PanDownload.exe 同级的目录下运行");
-                Console.WriteLine(">>> 回车退出 <<< (^_^)///");
+                Console.WriteLine(">> 按回车退出程序 (^_^)///");
                 Console.ReadLine();
             }
             else
             {
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("程序自检 Host 文件");
-                if (FileOpen.HostTesting())
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine("发现上次的 Host 文件没有清理干净！");
-                    FileOpen.HostReduction();
-                    Console.WriteLine("现在已经为你清理了！");
-
-                    Console.WriteLine("继续使用，请输入任意字符，空字符直接退出（按回车）");
-                    string str = Console.ReadLine();
-                    if (str == "") { Environment.Exit(0); }
-                }
                 #region 启动程序
                 ProcessStartInfo startInfo = new ProcessStartInfo();
                 startInfo.FileName = path;//启动的程序路径
