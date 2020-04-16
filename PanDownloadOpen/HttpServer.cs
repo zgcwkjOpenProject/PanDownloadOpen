@@ -59,19 +59,19 @@ Server: Web Server
 
         public static string GetBody(string data)
         {
-            if (data.Contains("/api/init?clienttype"))
+            if (data.Contains("/api/init?clienttype"))//http://pandownload.com/api/init?clienttype=0&referral=&t=000&version=2.2.2
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("抓取到 /api/init?clienttype 的请求，已处理！");
                 return "{\"srecord\":{\"autoQuery\":true},\"loginurl\":{\"url\":\"http:\\/\\/pandownload.com\\/bdlogin.html\"},\"wke\":\"http:\\/\\/dl.pandownload.club\\/dl\\/node-190312.dll\",\"pcscfg\":{\"appid\":250528,\"ua\":\"\",\"ct\":0},\"flag\":1,\"ad\":{\"url\":\"https:\\/\\/pandownload.com\\/donate.html\",\"image\":\"http:\\/\\/pandownload.com\\/images\\/donate.png\",\"attribute\":\"width=\\\"88\\\" height=\\\"100\\\" padding=\\\"0,0,5,0\\\"\",\"rand\":100},\"bdc\":[\"Z1F9eGIafQd9G3Z+e3lTRGkKdXZVdH1kel5CZnhTVFF5HGVmYAhXU3t2X3xhG1JxfXdnQ2tEZWZlRgkdY1B5U2RfZHhldlB4bVFDB2N6fXNXZnkYY1AZVm5EYlt6eG10eVQJeGZRdXNmGnQOfnlyCn55cQl5ewkMZ2d5DGZmdAt7U355fHZbCXl7CQxnZwkMZmZ0Dn55cgp+eXEJeXsJDGdnCQxmZnQOfnlyCn55cQl5ewkMZ2cJDGZmdA5+eXIKfnlxCXl7CQxnZwkMZmZ0Dn55cgp+eXEJeXsJDGdnCQxmZnQOfnlyCn55cQl5ewkMZ2cJDGZmdA57d2JdbnpxBn0eBmRUdXFWeEIIfHkJD3B9eQMCfFZ6HHoIVBttZHUfcXdjQ3IcZhphfH1RelJxU25kYFdxVFVEZlRbUn1WaEZ6UmwZenRxHHB6clByZ31eYAx5VnoIZhp5GWVZcnpcU3JEVBp9DFNRelUCAQ==\"],\"timestamp\":1587043987,\"code\":0,\"message\":\"success\"}";
             }
-            else if (data.Contains("/api/script/list?clienttype"))
+            else if (data.Contains("/api/script/list?clienttype"))//http://pandownload.com/api/script/list?clienttype=0&referral=&t=000&version=2.2.2
             {
                 Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("抓取到 /api/script/list?clienttype 的请求，已处理！");
                 return "{\"scripts\":[{\"name\":\"search_pandown.lua\",\"remove\":true},{\"name\":\"search_ncckl.lua\",\"remove\":true},{\"name\":\"search_quzhuanpan.lua\",\"remove\":true},{\"name\":\"anime_01.lua\",\"remove\":true},{\"name\":\"anime_02.lua\",\"remove\":true},{\"name\":\"anime_dilidili.lua\",\"remove\":true},{\"name\":\"anime\",\"remove\":true},{\"name\":\"s\",\"id\":2,\"url\":\"http:\\/\\/pandownload.com\\/static\\/scripts\\/s008\",\"md5\":\"8dfd9a6c08d06bec27ae358f315cca8f\"},{\"name\":\"download_pcs.lua\",\"id\":1000,\"url\":\"http:\\/\\/pandownload.com\\/static\\/scripts\\/download_pcs.lua\",\"md5\":\"38770cd3e9bcd62f7212941b51ca1378\"},{\"name\":\"default\",\"id\":0,\"url\":\"http:\\/\\/pandownload.com\\/static\\/scripts\\/default_0.6.7_3fee3733\",\"md5\":\"a1124f076924209d0322078000cdc882\",\"key\":\"568729a30cee34aec0e6fc7a6e303272\"}],\"code\":0,\"message\":\"success\"}";
             }
-            else if (data.Contains("/api/latest?clienttype"))
+            else if (data.Contains("/api/latest?clienttype"))//http://pandownload.com/api/latest?clienttype=0&referral=&t=000&version=2.2.2
             {
                 Program.Status = true;//修改状态 > 告诉我已经处理了
                 Console.ForegroundColor = ConsoleColor.Yellow;
