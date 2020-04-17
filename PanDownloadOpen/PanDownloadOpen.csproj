@@ -52,13 +52,24 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FileOpen.cs" />
+    <Compile Include="HostsFile.cs" />
     <Compile Include="HttpServer.cs" />
+    <Compile Include="OutputResourceFile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="server\api\init" />
+    <EmbeddedResource Include="server\api\latest" />
+    <EmbeddedResource Include="server\api\latest-old" />
+    <EmbeddedResource Include="server\api\script\list" />
+    <EmbeddedResource Include="server\static\scripts\default_0.6.7_3fee3733" />
+    <EmbeddedResource Include="server\static\scripts\download_pcs.lua" />
+    <EmbeddedResource Include="server\static\scripts\s008" />
     <None Include="Properties\app.manifest" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="server\bdlogin.html" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
