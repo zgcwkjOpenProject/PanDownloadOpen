@@ -13,8 +13,6 @@ namespace PanDownloadOpen
 {
     class Program
     {
-        public static bool Status = false;//存储状态
-
         static void Main(string[] args)
         {
             Console.ForegroundColor = ConsoleColor.Green;
@@ -23,6 +21,7 @@ namespace PanDownloadOpen
             Console.WriteLine("参考：https://github.com/TkzcM/pandownload-fake-server");
             Console.WriteLine("开源：https://github.com/zgcwkj/PanDownloadOpen");
             //==> 代码实现
+            string path = Environment.CurrentDirectory + @"\PanDownload.exe.bak";
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine(">> 程序自检 Host 文件是否有残留");
             if (HostsFile.HostTesting())
@@ -34,10 +33,20 @@ namespace PanDownloadOpen
                 Console.WriteLine("现在已经为你清理了！");
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("继续使用，请输入任意字符，空字符直接退出（按回车）");
-                string str = Console.ReadLine();
-                if (str == "") { Environment.Exit(0); }
+                if (Console.ReadLine() == "") { Environment.Exit(0); }
             }
-            string path = Environment.CurrentDirectory + @"\PanDownload.exe";
+            Console.WriteLine(">> 程序自检 PanDownload.exe 文件名称是否修改");
+            if (!File.Exists(path) && File.Exists(path.Replace(".bak", "")))
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("发现上次的  PanDownload.exe 文件名称没有被修改！");
+                File.Move(path.Replace(".bak", ""), path);//更改文件名称
+                Console.ForegroundColor = ConsoleColor.Green;
+                Console.WriteLine("现在已经为你修改了！");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("继续使用，请输入任意字符，空字符直接退出（按回车）");
+                if (Console.ReadLine() == "") { Environment.Exit(0); }
+            }
             if (!File.Exists(path))
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -74,27 +83,50 @@ namespace PanDownloadOpen
                 Console.ForegroundColor = ConsoleColor.DarkYellow;
                 Console.WriteLine("正在启动  PanDownload.exe  程序");
                 ProcessStartInfo startInfo = new ProcessStartInfo();
-                startInfo.FileName = path;//启动的程序路径
+                File.Move(path, path.Replace(".bak", ""));//还原文件名称
+                startInfo.FileName = path.Replace(".bak", "");//启动的程序路径
                 startInfo.WindowStyle = ProcessWindowStyle.Normal;
                 Process.Start(startInfo);
                 #endregion
 
+                #region 服务监听
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("启动服务监听");
                 HttpServer.Open();
+                #endregion
+
+                #region 终止程序
                 while (true)
                 {
-                    if (Status)
+                    Process[] processes = Process.GetProcesses();
+                    string fileName = "";//运行的程序名称
+                    for (int i = 0; i < processes.Length - 1; i++)
                     {
-                        Console.ForegroundColor = ConsoleColor.Red;
+                        try
+                        {
+                            fileName += processes[i].MainModule.FileName;
+                        }
+                        catch { }
+                    }
+                    if (!fileName.Contains("PanDownload.exe"))
+                    {
+                        Console.ForegroundColor = ConsoleColor.DarkYellow;
                         Console.WriteLine("自动还原 Host 文件");
                         HostsFile.HostReduction();
-                        break;
+                        File.Move(path.Replace(".bak", ""), path);//更改文件名称
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("程序自毁将在 3 秒后执行");
+                        Thread.Sleep(3000);
+                        Environment.Exit(0);
                     }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.White;
+                        Console.WriteLine("PanDownload 程序还在运行中。时间：" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
+                    }
+                    Thread.Sleep(5000);
                 }
-                Console.ForegroundColor = ConsoleColor.Red;
-                Console.WriteLine("程序自毁将在 5 秒后执行");
-                System.Threading.Thread.Sleep(5000);
+                #endregion
             }
         }
     }

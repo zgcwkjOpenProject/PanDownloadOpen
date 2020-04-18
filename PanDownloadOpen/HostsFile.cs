@@ -4,7 +4,7 @@ namespace PanDownloadOpen
 {
     public class HostsFile
     {
-        static string pandownload_com = "127.0.0.1 pandownload.com";
+        static string pandownload_com = "127.0.0.1 search.pandown.cn\r\n127.0.0.1 pandownload.com";
 
         /// <summary>
         /// 检测 Host
