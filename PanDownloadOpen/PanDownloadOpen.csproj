@@ -71,5 +71,8 @@
   <ItemGroup>
     <EmbeddedResource Include="server\bdlogin.html" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="server\images\donate.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -6,9 +6,9 @@
 
 [http://github.com/TkzcM/pandownload-fake-server](http://github.com/TkzcM/pandownload-fake-server)
 
-# 程序下载
+# 项目声明
 
-[PanDownloadOpen程序.7z](http://blog.zgcwkj.cn/usr/uploads/2020/04/3287047974.7z)
+> 本项目仅用于学习如何在 C# 的环境下，写一个 Http 服务！
 
 # 关联博客
 

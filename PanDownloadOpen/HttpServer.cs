@@ -102,6 +102,11 @@ Server: Web Server
                 Console.WriteLine("抓取到 /static/scripts/s008 的请求，已处理！");
                 return new OutputResourceFile("PanDownloadOpen.server.static.scripts.s008").GetFile();
             }
+            else if (data.Contains("/images/donate.png"))//http://pandownload.com/images/donate.png
+            {
+                Console.WriteLine("抓取到 /images/donate.png 的请求，已处理！");
+                return new OutputResourceFile("PanDownloadOpen.server.images.donate.png").GetFile();
+            }
             else
             {
                 Console.WriteLine("抓取到的未知请求 > " + data);
