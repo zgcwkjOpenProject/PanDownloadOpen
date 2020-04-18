@@ -16,7 +16,7 @@ namespace PanDownloadOpen
         static void Main(string[] args)
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("作者：zgcwkj 20200417");
+            Console.WriteLine("作者：zgcwkj 20200418");
             Console.WriteLine("功能：跳过 PanDownload 的服务验证，实现打开程序");
             Console.WriteLine("参考：https://github.com/TkzcM/pandownload-fake-server");
             Console.WriteLine("开源：https://github.com/zgcwkj/PanDownloadOpen");
