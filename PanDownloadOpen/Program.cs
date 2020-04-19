@@ -2,12 +2,10 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
-using System.Linq;
 using System.Net;
 using System.Net.Sockets;
 using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 
 namespace PanDownloadOpen
 {
@@ -16,7 +14,7 @@ namespace PanDownloadOpen
         static void Main(string[] args)
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("作者：zgcwkj 20200418");
+            Console.WriteLine("作者：zgcwkj 20200419");
             Console.WriteLine("功能：跳过 PanDownload 的服务验证，实现打开程序");
             Console.WriteLine("参考：https://github.com/TkzcM/pandownload-fake-server");
             Console.WriteLine("开源：https://github.com/zgcwkj/PanDownloadOpen");
@@ -62,7 +60,7 @@ namespace PanDownloadOpen
                 Console.WriteLine("自动修改 Host 文件");
                 HostsFile.HostChange();
                 IPHostEntry host = Dns.GetHostEntry("pandownload.com");
-                if (host.AddressList.Count() != 0 && host.AddressList[0].ToString().Contains("127.0.0.1"))
+                if (host.AddressList.Length != 0 && host.AddressList[0].ToString().Contains("127.0.0.1"))
                 {
                     Console.ForegroundColor = ConsoleColor.Green;
                     Console.WriteLine("验证 Host 文件通过");

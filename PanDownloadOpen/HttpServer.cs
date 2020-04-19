@@ -75,7 +75,7 @@ Server: Web Server
             else if (data.Contains("/api/latest?clienttype"))//http://pandownload.com/api/latest?clienttype=0&referral=&t=000&version=2.2.2
             {
                 Console.WriteLine("抓取到 /api/script/list?clienttype 的请求，已处理！");
-                bodyStr = "{\"version\":\"2.3.3\",\"url\":\"https:\\/\\/dl1.cnponer.com\\/files\\/PanDownload_v2.2.2.zip\",\"web\":\"https:\\/\\/www.lanzous.com\\/i8ua9na\",\"detail\":\"\\u66f4\\u65b0\\u65f6\\u95f4: 2020-04-15\\n\\u66f4\\u65b0\\u5185\\u5bb9:\\n1. \\u89e3\\u5f00\\u0020\\u0050\\u0061\\u006e\\u0044\\u006f\\u0077\\u006e\\u006c\\u006f\\u0061\\u0064\\u0020\\u5199\\u7684\\u5de5\\u5177\\uff01\\n2. \\u5f00\\u6e90\\u5730\\u5740\\uff1ahttps://github.com/zgcwkj/PanDownloadOpen\",\"md5\":\"null\",\"code\":0,\"message\":\"success\"}";
+                bodyStr = "{\"version\":\"2.3.3\",\"url\":\"https:\\/\\/null.com\\/PanDownload.zip\",\"web\":\"https:\\/\\/www.lanzous.com\\/i8ua9na\",\"detail\":\"\\u66f4\\u65b0\\u65f6\\u95f4: 2020-04-15\\n\\u66f4\\u65b0\\u5185\\u5bb9:\\n1. \\u89e3\\u5f00\\u0020\\u0050\\u0061\\u006e\\u0044\\u006f\\u0077\\u006e\\u006c\\u006f\\u0061\\u0064\\u0020\\u5199\\u7684\\u5de5\\u5177\\uff01\\n2. \\u5f00\\u6e90\\u5730\\u5740\\uff1ahttps://github.com/zgcwkj/PanDownloadOpen\",\"md5\":\"null\",\"code\":0,\"message\":\"success\"}";
             }
             else if (data.Contains("/bdlogin.html"))//http://pandownload.com/bdlogin.html
             {
