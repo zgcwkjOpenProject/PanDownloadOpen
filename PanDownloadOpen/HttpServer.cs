@@ -3,12 +3,36 @@ using System.Text;
 using System.Net;
 using System.Net.Sockets;
 using System.Threading;
+using System.Net.NetworkInformation;
 
 namespace PanDownloadOpen
 {
     public class HttpServer
     {
-        public static void Open()
+        /// <summary>
+        /// 验证端口
+        /// </summary>
+        /// <param name="port">端口</param>
+        /// <returns>占用状态</returns>
+        public static bool VerifyPort(int port)
+        {
+            IPGlobalProperties ipProperties = IPGlobalProperties.GetIPGlobalProperties();
+            IPEndPoint[] ipEndPoints = ipProperties.GetActiveTcpListeners();
+
+            foreach (IPEndPoint endPoint in ipEndPoints)
+            {
+                if (endPoint.Port == port)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// 启动服务
+        /// </summary>
+        public static void StartUp()
         {
             Socket socketWatch = new Socket(AddressFamily.InterNetwork, SocketType.Stream, ProtocolType.Tcp);
             socketWatch.Bind(new IPEndPoint(IPAddress.Parse("127.0.0.1"), 80));

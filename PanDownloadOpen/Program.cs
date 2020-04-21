@@ -14,7 +14,7 @@ namespace PanDownloadOpen
         static void Main(string[] args)
         {
             Console.ForegroundColor = ConsoleColor.Green;
-            Console.WriteLine("作者：zgcwkj 20200419");
+            Console.WriteLine("作者：zgcwkj 20200421");
             Console.WriteLine("功能：跳过 PanDownload 的服务验证，实现打开程序");
             Console.WriteLine("参考：https://github.com/TkzcM/pandownload-fake-server");
             Console.WriteLine("开源：https://github.com/zgcwkj/PanDownloadOpen");
@@ -33,6 +33,7 @@ namespace PanDownloadOpen
                 Console.WriteLine("继续使用，请输入任意字符，空字符直接退出（按回车）");
                 if (Console.ReadLine() == "") { Environment.Exit(0); }
             }
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine(">> 程序自检 PanDownload.exe 文件名称是否修改");
             if (!File.Exists(path) && File.Exists(path.Replace(".bak", "")))
             {
@@ -44,6 +45,17 @@ namespace PanDownloadOpen
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("继续使用，请输入任意字符，空字符直接退出（按回车）");
                 if (Console.ReadLine() == "") { Environment.Exit(0); }
+            }
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine(">> 程序验证 80 端口占用状态");
+            if (HttpServer.VerifyPort(80))
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("发现本机的 80 端口已经被占用状态！");
+                Console.ForegroundColor = ConsoleColor.Red;
+                Console.WriteLine("需要自己手动排除，回车直接退出");
+                Console.ReadLine();
+                Environment.Exit(0);
             }
             if (!File.Exists(path))
             {
@@ -90,7 +102,7 @@ namespace PanDownloadOpen
                 #region 服务监听
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("启动服务监听");
-                HttpServer.Open();
+                HttpServer.StartUp();
                 #endregion
 
                 #region 终止程序
