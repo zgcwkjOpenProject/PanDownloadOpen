@@ -57,7 +57,6 @@
   <ItemGroup>
     <EmbeddedResource Include="server\api\init" />
     <EmbeddedResource Include="server\api\latest" />
-    <EmbeddedResource Include="server\api\latest-old" />
     <EmbeddedResource Include="server\api\script\list" />
     <EmbeddedResource Include="server\static\scripts\default_0.6.7_3fee3733" />
     <EmbeddedResource Include="server\static\scripts\download_pcs.lua" />
