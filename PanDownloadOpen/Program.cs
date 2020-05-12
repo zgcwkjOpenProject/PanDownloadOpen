@@ -108,6 +108,7 @@ namespace PanDownloadOpen
                 #region 终止程序
                 while (true)
                 {
+                    Thread.Sleep(5000);
                     Process[] processes = Process.GetProcesses();
                     string fileName = "";//运行的程序名称
                     for (int i = 0; i < processes.Length - 1; i++)
@@ -134,7 +135,6 @@ namespace PanDownloadOpen
                         Console.ForegroundColor = ConsoleColor.White;
                         Console.WriteLine("PanDownload 程序还在运行中。时间：" + DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"));
                     }
-                    Thread.Sleep(5000);
                 }
                 #endregion
             }
