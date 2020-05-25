@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // 控制。更改这些特性值可修改
 // 与程序集关联的信息。
 [assembly: AssemblyTitle("PanDownloadOpen")]
-[assembly: AssemblyDescription("跳过吧 PanDownload 的服务验证，实现打开程序")]
+[assembly: AssemblyDescription("跳过 PanDownload 的服务验证，实现打开程序")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("zgcwkj")]
 [assembly: AssemblyProduct("PanDownloadOpen")]
